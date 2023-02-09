@@ -1,0 +1,335 @@
+{
+	"info": {
+		"_postman_id": "aeae780e-c747-4010-8c1d-e0c9ef0f4a88",
+		"name": "OTUS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11081747"
+	},
+	"item": [
+		{
+			"name": "HW6",
+			"item": [
+				{
+					"name": "User 1",
+					"item": [
+						{
+							"name": "Registration",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"sasha\",\r\n  \"password\": \"123456\",\r\n  \"firstName\": \"Александр\",\r\n  \"middleName\": \"Сергеевич\",\r\n  \"lastName\": \"Петрулин\",\r\n  \"email\": \"sasha@mail.ru\",\r\n  \"mobilePhone\": \"+375291112233\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "arch.homework/ui-api-service/api/v1/auth/registration",
+									"host": [
+										"arch",
+										"homework"
+									],
+									"path": [
+										"ui-api-service",
+										"api",
+										"v1",
+										"auth",
+										"registration"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get token",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic VVNFUl9DTElFTlRfQVBQOmFkbWlu",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"sasha\",\r\n  \"password\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "arch.homework/ui-api-service/api/v1/auth/token",
+									"host": [
+										"arch",
+										"homework"
+									],
+									"path": [
+										"ui-api-service",
+										"api",
+										"v1",
+										"auth",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit user",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJzYXNoYSIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE2NzU5NzEyMzMsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJqdGkiOiJkOGE0OWM0NC04ODQ5LTQyODQtYTY3Zi1kYzc1MDZjOTgzMDgiLCJlbWFpbCI6InNhc2hhQG1haWwucnUiLCJjbGllbnRfaWQiOiJVU0VSX0NMSUVOVF9BUFAifQ.FLltHP9vKG9rloNN4O1NGxg9sJPKVOPGaLE-Txec-oaQWXJBB2JXMW7oIs99zQ6RZB1aqVV1hoWYD8cGURobVFDKGEIDfCfzPG6NuDvwQfZqvOFxqpr1y7zaiuUiYTvGh6Nykm2giUZSbfjCzXiRXEuDJ-mrQnkGzG_MPYe9oaanr_yjGnb2TOc4l6eLyuY2aW4EGcznQYI6FW7JtBHquJS4roXJkNvUgdqmKqjPJzM1vc3O2bh1p_-5WLWg2UqZWK8BQ9PCssh-w6bgwBmWGhme4FDZRwis4JNZUL0nIXaaGX6f-bImvsNoJF3d2ZsqA9vwu_1Hz02dkAtkIGX4PA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"sasha\",\r\n  \"firstName\": \"Александр\",\r\n  \"middleName\": \"Сергеевич\",\r\n  \"lastName\": \"Петрулин\",\r\n  \"email\": \"sasha@mail.ru\",\r\n  \"mobilePhone\": \"+375291112233\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "arch.homework/ui-api-service/api/v1/external/user/edit",
+									"host": [
+										"arch",
+										"homework"
+									],
+									"path": [
+										"ui-api-service",
+										"api",
+										"v1",
+										"external",
+										"user",
+										"edit"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get user",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJzYXNoYSIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE2NzU5NzEyMzMsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJqdGkiOiJkOGE0OWM0NC04ODQ5LTQyODQtYTY3Zi1kYzc1MDZjOTgzMDgiLCJlbWFpbCI6InNhc2hhQG1haWwucnUiLCJjbGllbnRfaWQiOiJVU0VSX0NMSUVOVF9BUFAifQ.FLltHP9vKG9rloNN4O1NGxg9sJPKVOPGaLE-Txec-oaQWXJBB2JXMW7oIs99zQ6RZB1aqVV1hoWYD8cGURobVFDKGEIDfCfzPG6NuDvwQfZqvOFxqpr1y7zaiuUiYTvGh6Nykm2giUZSbfjCzXiRXEuDJ-mrQnkGzG_MPYe9oaanr_yjGnb2TOc4l6eLyuY2aW4EGcznQYI6FW7JtBHquJS4roXJkNvUgdqmKqjPJzM1vc3O2bh1p_-5WLWg2UqZWK8BQ9PCssh-w6bgwBmWGhme4FDZRwis4JNZUL0nIXaaGX6f-bImvsNoJF3d2ZsqA9vwu_1Hz02dkAtkIGX4PA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"sasha\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "arch.homework/ui-api-service/api/v1/external/user/find",
+									"host": [
+										"arch",
+										"homework"
+									],
+									"path": [
+										"ui-api-service",
+										"api",
+										"v1",
+										"external",
+										"user",
+										"find"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User 2",
+					"item": [
+						{
+							"name": "Registration Copy",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"anton\",\r\n  \"password\": \"111222\",\r\n  \"firstName\": \"Антон\",\r\n  \"middleName\": \"Сергеевич\",\r\n  \"lastName\": \"Петрулин\",\r\n  \"email\": \"anton@mail.ru\",\r\n  \"mobilePhone\": \"+375291999000\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "arch.homework/ui-api-service/api/v1/auth/registration",
+									"host": [
+										"arch",
+										"homework"
+									],
+									"path": [
+										"ui-api-service",
+										"api",
+										"v1",
+										"auth",
+										"registration"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get token Copy",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic VVNFUl9DTElFTlRfQVBQOmFkbWlu",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"anton\",\r\n  \"password\": \"111222\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "arch.homework/ui-api-service/api/v1/auth/token",
+									"host": [
+										"arch",
+										"homework"
+									],
+									"path": [
+										"ui-api-service",
+										"api",
+										"v1",
+										"auth",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit user Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhbnRvbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE2NzU5NzIyOTQsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJqdGkiOiIwZjMyNzUxMC1hNWYxLTRjY2QtYjRjNy1iNDNlNmEwZTA2NWIiLCJlbWFpbCI6ImFudG9uQG1haWwucnUiLCJjbGllbnRfaWQiOiJVU0VSX0NMSUVOVF9BUFAifQ.v8OJS2FRLtRJnbLsPHvbowv5FYF8rxOwjZWrLU4Ln5UyVYhUrG5uVIwW2fjhgLXgBJQ5MZ_HbY6hJLKRuxR7bgsLXaOBE0DsS9Mj1VRFzXjP0pU4AzQVGaFM25abtpiRcPkFU1EHyJWJ9Yo6oyGmItEOf7mrYEMoB1s0JcwcS8aznh_NA-df-c_TxbHhzOmnkBCKwgC8LwkkgpTQ5OEV3pJ6CK2JeRu5pLCyC-jb--dEMH2sHG6wCVGmBarf6Hn3WHagt7UOVcE9o2UUHdxmSOOiXrgPp0sZtl3r_VSCiWPObpIRG16d4-2cYkobdR9X-19lfLvKJMNUS1liLKOrqw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"sasha\",\r\n  \"firstName\": \"Александр\",\r\n  \"middleName\": \"Сергеевич\",\r\n  \"lastName\": \"Петрулин\",\r\n  \"email\": \"sasha@mail.ru\",\r\n  \"mobilePhone\": \"+375291112233\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "arch.homework/ui-api-service/api/v1/external/user/edit",
+									"host": [
+										"arch",
+										"homework"
+									],
+									"path": [
+										"ui-api-service",
+										"api",
+										"v1",
+										"external",
+										"user",
+										"edit"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get user Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhbnRvbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE2NzU5NzIyOTQsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJqdGkiOiIwZjMyNzUxMC1hNWYxLTRjY2QtYjRjNy1iNDNlNmEwZTA2NWIiLCJlbWFpbCI6ImFudG9uQG1haWwucnUiLCJjbGllbnRfaWQiOiJVU0VSX0NMSUVOVF9BUFAifQ.v8OJS2FRLtRJnbLsPHvbowv5FYF8rxOwjZWrLU4Ln5UyVYhUrG5uVIwW2fjhgLXgBJQ5MZ_HbY6hJLKRuxR7bgsLXaOBE0DsS9Mj1VRFzXjP0pU4AzQVGaFM25abtpiRcPkFU1EHyJWJ9Yo6oyGmItEOf7mrYEMoB1s0JcwcS8aznh_NA-df-c_TxbHhzOmnkBCKwgC8LwkkgpTQ5OEV3pJ6CK2JeRu5pLCyC-jb--dEMH2sHG6wCVGmBarf6Hn3WHagt7UOVcE9o2UUHdxmSOOiXrgPp0sZtl3r_VSCiWPObpIRG16d4-2cYkobdR9X-19lfLvKJMNUS1liLKOrqw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"anton\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "arch.homework/ui-api-service/api/v1/external/user/find",
+									"host": [
+										"arch",
+										"homework"
+									],
+									"path": [
+										"ui-api-service",
+										"api",
+										"v1",
+										"external",
+										"user",
+										"find"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,19 @@
+apiVersion: skaffold/v2beta17
+kind: Config
+metadata:
+  name: ui-api-service
+build:
+  local:
+    useBuildkit: true
+  artifacts:
+  - image: dev/ui-api-service
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+    - deployment.yaml
+portForward:
+- resourceType: service
+  resourceName: ui-api-service
+  port: 8000

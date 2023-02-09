@@ -1,0 +1,54 @@
+
+server:
+  port: 8000
+  shutdown: graceful
+spring:
+  application:
+    name: ui-api-service
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+    restart:
+      enabled: true
+    refresh:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,prometheus,info,shutdown,restart,refresh
+      path-mapping:
+        prometheus: metrics
+      base-path: /
+feign:
+  autoconfiguration:
+    jackson:
+      enabled: true
+  client:
+    config:
+      auth-service:
+        connectionTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+security:
+  oauth2:
+    resource:
+      jwt:
+        key-value:
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwXXa8rldlJWL8sZVQ+SL
+          4UwT3bXDPbAe6pFpWwvUyS9J7Ry5iRst3mKB+vWYYuoyfwzKPftAdHS2gfsVmDeH
+          1L/FSclcB56phGnF4ZAn9wHiqWW7R8iUm+mce08MhaECigF0+q/RuOjz8scyfvsx
+          G/vFY744TCDIbph0dkM58bXtAHsmIP5KzIJRpjILZg2EP1VwYKZqtQVyPMgDrdVV
+          ZO5kEb9hfxjQrtsfXMtwOI7LBwbZafbaOPNagO3h67GdmGqAqMLgsKln0jjtr8mH
+          x0DPxvXS8mThCvvSnKdHKMRZKsggf481DE7cMUmBETZO4b052TJAcp9blcRY+g74
+          XQIDAQAB
+          -----END PUBLIC KEY-----
+sfp:
+  authorization: "Basic VVNFUl9DTElFTlRfQVBQOm90dXNhZG1pbg=="
