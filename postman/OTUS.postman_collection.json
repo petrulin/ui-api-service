@@ -166,6 +166,47 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "NewOrder",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJzYXNoYSIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE2NzY1NjcwMDQsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJqdGkiOiI4YjNlYTcxNC1lMGExLTRiMTAtOTU1MS01MThlNzVlNDhiMjYiLCJlbWFpbCI6InNhc2hhQG1haWwucnUiLCJjbGllbnRfaWQiOiJVU0VSX0NMSUVOVF9BUFAifQ.AdSsBUQlFmGbS-CcR_4ge_KJyU-jdaqQnp9S4EBdLMQpzoot8Lme1nb-dr8dSdPH951D5D8LqYSHZr6Oo8s-_XPPdM-KrK-HirboeIg1SD6h2Vs3c8q0DMgKE1C8O8Lmj05k8JA9c1leoKo01Gg5dtK3rqpxMppZKvkrpWZOtP-sDHHp8l5b2QLUBNAekz88T7OZSNjF8ZTaVaH7JMAP0uaD_ErmYJTWZv6U1Um32oR9teKTpgz7va3QY8rkQROvRNfzi6ZsZDPL_4hjTb6-MvVgI3hoNNkEMdnNMUgWSDTIFsz-qaBPhayZf4_BLUYDc0kyLwzr3sbjd1i7C-8qmA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"msgId\": \"f8c3de3d-1fea-4d7c-a8b0-29f63c4c3454\",\r\n  \"userName\": \"sasha\",\r\n  \"totalAmount\": 70.32,\r\n  \"totalDiscount\": 1.50,\r\n  \"totalQuantity\": 89\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "arch.homework/ui-api-service/api/v1/external/order",
+									"host": [
+										"arch",
+										"homework"
+									],
+									"path": [
+										"ui-api-service",
+										"api",
+										"v1",
+										"external",
+										"order"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
