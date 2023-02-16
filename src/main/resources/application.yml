@@ -5,6 +5,19 @@ server:
 spring:
   application:
     name: ui-api-service
+  rabbitmq:
+    host: rabbit-rabbitmq.default.svc.cluster.local
+    port: 5672
+    username: user
+    password: ${RABBIT_PASS}
+    virtual-host: "/"
+    ssl:
+      enabled: false
+      verify-hostname: false
+    queues:
+      order-queue: order.queue
+    exchanges:
+      order-exchange: order.exchange
 management:
   endpoint:
     health:

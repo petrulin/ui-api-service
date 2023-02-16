@@ -32,6 +32,12 @@ spec:
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: {{ .Values.image.repository }}
+          env:
+            - name: RABBIT_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: rabbit-rabbitmq
+                  key: rabbitmq-password
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
