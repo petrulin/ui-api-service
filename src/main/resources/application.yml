@@ -15,9 +15,9 @@ spring:
       enabled: false
       verify-hostname: false
     queues:
-      order-queue: order.queue
+      order-queue: otus.order.queue
     exchanges:
-      order-exchange: order.exchange
+      order-exchange: otus.order.exchange
 management:
   endpoint:
     health:
