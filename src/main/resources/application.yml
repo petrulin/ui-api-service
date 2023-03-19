@@ -44,6 +44,10 @@ feign:
         connectionTimeout: 5000
         readTimeout: 5000
         loggerLevel: full
+      billing-service:
+        connectionTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
 logging:
   level:
     org:

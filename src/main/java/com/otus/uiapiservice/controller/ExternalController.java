@@ -2,11 +2,13 @@ package com.otus.uiapiservice.controller;
 
 
 import com.otus.uiapiservice.client.AuthServiceClient;
+import com.otus.uiapiservice.client.BillingServiceClient;
 import com.otus.uiapiservice.domain.dto.OrderDTO;
 import com.otus.uiapiservice.domain.rabbitmq.RMessage;
 import com.otus.uiapiservice.domain.request.OrderRequest;
 import com.otus.uiapiservice.domain.request.RegisterUserRequest;
 import com.otus.uiapiservice.domain.request.auth.CreateUserRequest;
+import com.otus.uiapiservice.domain.request.billing.BalanceClientRequest;
 import com.otus.uiapiservice.domain.response.SimpeResponse;
 import com.otus.uiapiservice.domain.response.auth.UserResponse;
 import com.otus.uiapiservice.error.ApplicationError;
@@ -37,6 +39,9 @@ public class ExternalController {
 
     @Autowired
     AuthServiceClient asc;
+
+    @Autowired
+    BillingServiceClient bsc;
 
     private final RabbitTemplate rt;
 
@@ -92,6 +97,38 @@ public class ExternalController {
             );
 
             return ResponseEntity.ok(new SimpeResponse("OK", ""));
+        } catch (Exception ex) {
+            return ResponseEntity.ok(new SimpeResponse("ERROR", ex.getLocalizedMessage()));
+        }
+    }
+
+    @PreAuthorize("hasRole('USER')")
+    @PostMapping(path = "/user/balance/add")
+    public ResponseEntity<SimpeResponse> balanceAdd(@RequestBody BalanceClientRequest balanceClientRequest) {
+        try {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String currentPrincipalName = authentication.getName();
+            if (!currentPrincipalName.equals(balanceClientRequest.getUsername())) {
+                throw new ApplicationException(ApplicationError.ACCESS_DENIED);
+            }
+            SimpeResponse response = bsc.balanceAdd(balanceClientRequest);
+            return ResponseEntity.ok(response);
+        } catch (Exception ex) {
+            return ResponseEntity.ok(new SimpeResponse("ERROR", ex.getLocalizedMessage()));
+        }
+    }
+
+    @PreAuthorize("hasRole('USER')")
+    @PostMapping(path = "/user/balance/withdraw")
+    public ResponseEntity<SimpeResponse> balanceWithdraw(@RequestBody BalanceClientRequest balanceClientRequest) {
+        try {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String currentPrincipalName = authentication.getName();
+            if (!currentPrincipalName.equals(balanceClientRequest.getUsername())) {
+                throw new ApplicationException(ApplicationError.ACCESS_DENIED);
+            }
+            SimpeResponse response = bsc.withdrawAdd(balanceClientRequest);
+            return ResponseEntity.ok(response);
         } catch (Exception ex) {
             return ResponseEntity.ok(new SimpeResponse("ERROR", ex.getLocalizedMessage()));
         }

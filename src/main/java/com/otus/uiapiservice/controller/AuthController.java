@@ -5,9 +5,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.otus.uiapiservice.client.AuthServiceClient;
+import com.otus.uiapiservice.client.BillingServiceClient;
 import com.otus.uiapiservice.domain.dto.RoleData;
 import com.otus.uiapiservice.domain.request.RegisterUserRequest;
 import com.otus.uiapiservice.domain.request.auth.CreateUserRequest;
+import com.otus.uiapiservice.domain.request.billing.RegisterClientRequest;
 import com.otus.uiapiservice.domain.response.SimpeResponse;
 import com.otus.uiapiservice.domain.response.auth.CreateUserResponse;
 import com.otus.uiapiservice.domain.response.auth.UserResponse;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @RequestMapping(value = "/ui-api-service/api/v1/auth/")
 @RestController
@@ -36,6 +39,9 @@ public class AuthController {
 
     @Autowired
     AuthServiceClient asc;
+
+    @Autowired
+    BillingServiceClient bsc;
 
     public AuthController() {
         this.modelMapper = new ModelMapper();
@@ -54,10 +60,13 @@ public class AuthController {
             cur.setRoles(roles);
 
             CreateUserResponse createUserResponse= asc.addUser(cur);
-            if (createUserResponse.getErrorCode() == 0) {
+
+            SimpeResponse createBillingClientResponse =  bsc.newClient(new RegisterClientRequest(user.getUsername()));
+
+            if ((createUserResponse.getErrorCode() == 0) && (Objects.equals(createBillingClientResponse.getError(), ""))) {
                 return ResponseEntity.ok(new SimpeResponse("OK", ""));
             } else {
-                return ResponseEntity.ok(new SimpeResponse("ERROR", createUserResponse.getErrorMessage()));
+                return ResponseEntity.ok(new SimpeResponse("ERROR", createUserResponse.getErrorMessage() + createBillingClientResponse.getError()));
             }
 
         } catch (Exception ex) {
