@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "HW9",
+			"name": "HW10",
 			"item": [
 				{
 					"name": "User 1",
@@ -203,6 +203,176 @@
 										"v1",
 										"external",
 										"order"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "balanceAdd",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJzYXNoYSIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE2NzkyMzM1OTMsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJqdGkiOiI2MDcyOTViZi1lYzYyLTQ4MzctYmE4Yi1hODI0ZmQxNTlhMDIiLCJlbWFpbCI6InNhc2hhQG1haWwucnUiLCJjbGllbnRfaWQiOiJVU0VSX0NMSUVOVF9BUFAifQ.hUXvW-BXIsm8-A7cdf-GDhY0gYXswJB4SUPgjcqhF0Y5nE51NbX7EyA99nsAuqvAui0UXOXZWvqxuh_RT39Nb1qW-ZYcAAGsrSTTGwfgeocdzhlTxYOlOjc2a8P3ct_Buu6D_oPQ6pBS8VA1CudyXOcAnjrc2XepjIYsi6QAxP92aDAboCgI6O0ieUy28oNJAEVFBM5aLmVPFOgwg5IkkR50ifSEmCoGUcWji3bc3h-4HVCzkFEeJb4osQG9_FkOJ-GCSfQrtlV-B_5mXnHCfz9frX3ISfA3fPA4mGpF3G3e2wSeOw2Pdh4lkEo9TAc4vpmkmnD6J1ZE7EHM41Hbeg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"sasha\",\r\n  \"amount\": 1000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "arch.homework/ui-api-service/api/v1/user/balance/add",
+									"host": [
+										"arch",
+										"homework"
+									],
+									"path": [
+										"ui-api-service",
+										"api",
+										"v1",
+										"user",
+										"balance",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "balanceWithdraw",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJzYXNoYSIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE2NzkyMzM1OTMsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJqdGkiOiI2MDcyOTViZi1lYzYyLTQ4MzctYmE4Yi1hODI0ZmQxNTlhMDIiLCJlbWFpbCI6InNhc2hhQG1haWwucnUiLCJjbGllbnRfaWQiOiJVU0VSX0NMSUVOVF9BUFAifQ.hUXvW-BXIsm8-A7cdf-GDhY0gYXswJB4SUPgjcqhF0Y5nE51NbX7EyA99nsAuqvAui0UXOXZWvqxuh_RT39Nb1qW-ZYcAAGsrSTTGwfgeocdzhlTxYOlOjc2a8P3ct_Buu6D_oPQ6pBS8VA1CudyXOcAnjrc2XepjIYsi6QAxP92aDAboCgI6O0ieUy28oNJAEVFBM5aLmVPFOgwg5IkkR50ifSEmCoGUcWji3bc3h-4HVCzkFEeJb4osQG9_FkOJ-GCSfQrtlV-B_5mXnHCfz9frX3ISfA3fPA4mGpF3G3e2wSeOw2Pdh4lkEo9TAc4vpmkmnD6J1ZE7EHM41Hbeg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"sasha\",\r\n  \"amount\": 71.73\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "arch.homework/ui-api-service/api/v1/external/user/balance/withdraw",
+									"host": [
+										"arch",
+										"homework"
+									],
+									"path": [
+										"ui-api-service",
+										"api",
+										"v1",
+										"external",
+										"user",
+										"balance",
+										"withdraw"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "balanceGet",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJzYXNoYSIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE2NzkyMzM1OTMsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJqdGkiOiI2MDcyOTViZi1lYzYyLTQ4MzctYmE4Yi1hODI0ZmQxNTlhMDIiLCJlbWFpbCI6InNhc2hhQG1haWwucnUiLCJjbGllbnRfaWQiOiJVU0VSX0NMSUVOVF9BUFAifQ.hUXvW-BXIsm8-A7cdf-GDhY0gYXswJB4SUPgjcqhF0Y5nE51NbX7EyA99nsAuqvAui0UXOXZWvqxuh_RT39Nb1qW-ZYcAAGsrSTTGwfgeocdzhlTxYOlOjc2a8P3ct_Buu6D_oPQ6pBS8VA1CudyXOcAnjrc2XepjIYsi6QAxP92aDAboCgI6O0ieUy28oNJAEVFBM5aLmVPFOgwg5IkkR50ifSEmCoGUcWji3bc3h-4HVCzkFEeJb4osQG9_FkOJ-GCSfQrtlV-B_5mXnHCfz9frX3ISfA3fPA4mGpF3G3e2wSeOw2Pdh4lkEo9TAc4vpmkmnD6J1ZE7EHM41Hbeg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"sasha\",\r\n  \"amount\": 71.73\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "arch.homework/ui-api-service/api/v1/external/user/balance/get",
+									"host": [
+										"arch",
+										"homework"
+									],
+									"path": [
+										"ui-api-service",
+										"api",
+										"v1",
+										"external",
+										"user",
+										"balance",
+										"get"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "userNotification",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJzYXNoYSIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE2Nzk1ODI4NzEsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJqdGkiOiI1M2UwZjhjYi1kYmQ0LTQ5OTAtOTA2YS1iYWUzZjA3ZjA0NWEiLCJlbWFpbCI6InNhc2hhQG1haWwucnUiLCJjbGllbnRfaWQiOiJVU0VSX0NMSUVOVF9BUFAifQ.toZbYxXiAUhkGaenqptlR3kNubgkaLhltKahNp1F5czBqf1v8WYUEqgybNEqy6eOvbtLR-M2dMYxTd1K1GmFFgnFLr6C9cSq6BtiJ0KkZCgWq6jNoMD8Z6LUTiFzX-B7_S8jplrmr8VNqa9uO9CqLCIcdEEb_CPtlTuZbCPnmT_sMkAIT1vZpPKBOt6Xie4N3QKUDjLNL0SHKgZ3gaOj-A4AW4UcHM0rBYGm6WPUwF3h4yNEg1UTmbkYIXB_V4wkz4GZABJW_wgFpRDsVbjOGbijW7BvofCwVYLEfwE4ZkSK_Pvvdqvd3VD-0QNwvqoexyxU0T0aRjiin5dqnjMZ5g",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"sasha\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "arch.homework/ui-api-service/api/v1/external/user/notification",
+									"host": [
+										"arch",
+										"homework"
+									],
+									"path": [
+										"ui-api-service",
+										"api",
+										"v1",
+										"external",
+										"user",
+										"notification"
 									]
 								}
 							},
