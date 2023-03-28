@@ -1,4 +1,4 @@
-
+**Github:**
 https://github.com/petrulin/auth-service
 https://github.com/petrulin/ui-api-service
 https://github.com/petrulin/order-service
@@ -8,15 +8,21 @@ https://github.com/petrulin/pay-service
 https://github.com/petrulin/billing-service
 https://github.com/petrulin/notification-service
 
-Установка БД:
+**Схема взаимодействия микросервисов:**
+https://raw.githubusercontent.com/petrulin/ui-api-service/master/postman/Microservice%20scheme.png
+
+**Postman collection:**
+https://github.com/petrulin/ui-api-service/blob/master/postman/OTUS.postman_collection.json
+
+**Установка БД:**
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm install my-postgresql -f auth-service/manifest/values.yaml bitnami/postgresql --version 11.9.13
 
-Установка rabbitmq:
+**Установка rabbitmq:**
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm install rabbit bitnami/rabbitmq
 
-Auth-Service:
+**Auth-Service:**
 
 Secret и ConfigMap (auth-service):
 kubectl apply -f manifest/secret.yaml
@@ -29,12 +35,12 @@ kubectl apply -f manifest/job.yaml
 Установка сервиса:
 helm install auth-service dev/ --values dev/values.yaml
 
-UI-Api-Service:
+**UI-Api-Service:**
 
 Установка сервиса:
 helm install ui-api-service dev/ --values dev/values.yaml
 
-Order-service
+**Order-service**
 Установка rabbitmq:
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm install rabbit bitnami/rabbitmq
@@ -46,7 +52,7 @@ kubectl apply -f manifest/job.yaml
 Установка сервиса:
 helm install order-service dev/ --values dev/values.yaml
 
-Store-service:
+**Store-service:**
 Миграция через job:
 kubectl create configmap store-sql --from-file=store-sql=manifest/schema.sql
 kubectl apply -f manifest/job.yaml
@@ -54,7 +60,7 @@ kubectl apply -f manifest/job.yaml
 Установка сервиса:
 helm install store-service dev/ --values dev/values.yaml
 
-Delivery-service:
+**Delivery-service:**
 Миграция через job:
 kubectl create configmap delivery-sql --from-file=delivery-sql=manifest/schema.sql
 kubectl apply -f manifest/job.yaml
@@ -62,7 +68,7 @@ kubectl apply -f manifest/job.yaml
 Установка сервиса:
 helm install delivery-service dev/ --values dev/values.yaml
 
-Pay-service:
+**Pay-service:**
 Миграция через job:
 kubectl create configmap pay-sql --from-file=pay-sql=manifest/schema.sql
 kubectl apply -f manifest/job.yaml
@@ -70,7 +76,7 @@ kubectl apply -f manifest/job.yaml
 Установка сервиса:
 helm install pay-service dev/ --values dev/values.yaml
 
-Billing-service:
+**Billing-service:**
 Миграция через job:
 kubectl create configmap billing-sql --from-file=billing-sql=manifest/schema.sql
 kubectl apply -f manifest/job.yaml
@@ -78,7 +84,7 @@ kubectl apply -f manifest/job.yaml
 Установка сервиса:
 helm install billing-service dev/ --values dev/values.yaml
 
-Notification-service:
+**Notification-service:**
 Миграция через job:
 kubectl create configmap notification-sql --from-file=notification-sql=manifest/schema.sql
 kubectl apply -f manifest/job.yaml
@@ -87,21 +93,17 @@ kubectl apply -f manifest/job.yaml
 helm install notification-service dev/ --values dev/values.yaml
 
 
+**REST методы для UI:**
 
+arch.homework/ui-api-service/api/v1/auth/registration (UI-Api-Service) регистрирует клиента и создаёт аккаунт в billing-service;
+arch.homework/ui-api-service/api/v1/auth/token - получение токена
+arch.homework/ui-api-service/api/v1/external/user/edit - редактирование личных данных клиента
+arch.homework/ui-api-service/api/v1/external/user/find - поиск клиента
 
-Схема взаимодействия микросервисов:
-https://raw.githubusercontent.com/petrulin/ui-api-service/master/postman/Microservice%20scheme.png
-
-Postman collection:
-https://github.com/petrulin/ui-api-service/blob/master/postman/OTUS.postman_collection.json
-
-Использовал сервисы из предыдущего ДЗ. Создал новые сервисы billing-service, notification-service.
-Новые REST методы для UI:
-arch.homework/ui-api-service/api/v1/auth/registration (UI-Api-Service) регистрирует пользователя и создаёт аккаунт в billing-service;
 arch.homework/ui-api-service/api/v1/external/user/balance/add добавляет деньги, arch.homework/ui-api-service/api/v1/external/user/balance/withdraw - списывает;
 arch.homework/ui-api-service/api/v1/external/user/balance/get - просмотр баланса;
 arch.homework/ui-api-service/api/v1/external/user/notification - просмотре нотификаций для конкретного пользователя.
-Создание заказа (метод arch.homework/ui-api-service/api/v1/external/order):
+**Создание заказа (метод arch.homework/ui-api-service/api/v1/external/order):**
 1. UI-Api-Service посылает сообщение newOrder;
 2. Order-Service создаёт новый заказ в статусе "Created";
 3. Order-Service посылает sale в очередь pay.queue;
