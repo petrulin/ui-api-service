@@ -1,4 +1,5 @@
 **Github:**
+
 https://github.com/petrulin/auth-service
 https://github.com/petrulin/ui-api-service
 https://github.com/petrulin/order-service
@@ -9,16 +10,20 @@ https://github.com/petrulin/billing-service
 https://github.com/petrulin/notification-service
 
 **Схема взаимодействия микросервисов:**
+
 https://raw.githubusercontent.com/petrulin/ui-api-service/master/postman/Microservice%20scheme.png
 
 **Postman collection:**
+
 https://github.com/petrulin/ui-api-service/blob/master/postman/OTUS.postman_collection.json
 
 **Установка БД:**
+
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm install my-postgresql -f auth-service/manifest/values.yaml bitnami/postgresql --version 11.9.13
 
 **Установка rabbitmq:**
+
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm install rabbit bitnami/rabbitmq
 
@@ -41,6 +46,7 @@ helm install auth-service dev/ --values dev/values.yaml
 helm install ui-api-service dev/ --values dev/values.yaml
 
 **Order-service**
+
 Установка rabbitmq:
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm install rabbit bitnami/rabbitmq
@@ -53,6 +59,7 @@ kubectl apply -f manifest/job.yaml
 helm install order-service dev/ --values dev/values.yaml
 
 **Store-service:**
+
 Миграция через job:
 kubectl create configmap store-sql --from-file=store-sql=manifest/schema.sql
 kubectl apply -f manifest/job.yaml
@@ -77,6 +84,7 @@ kubectl apply -f manifest/job.yaml
 helm install pay-service dev/ --values dev/values.yaml
 
 **Billing-service:**
+
 Миграция через job:
 kubectl create configmap billing-sql --from-file=billing-sql=manifest/schema.sql
 kubectl apply -f manifest/job.yaml
@@ -85,6 +93,7 @@ kubectl apply -f manifest/job.yaml
 helm install billing-service dev/ --values dev/values.yaml
 
 **Notification-service:**
+
 Миграция через job:
 kubectl create configmap notification-sql --from-file=notification-sql=manifest/schema.sql
 kubectl apply -f manifest/job.yaml
