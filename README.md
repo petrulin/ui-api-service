@@ -20,7 +20,7 @@ https://github.com/petrulin/ui-api-service/blob/master/postman/OTUS.postman_coll
 **Установка БД:**
 
 helm repo add bitnami https://charts.bitnami.com/bitnami
-helm install my-postgresql -f auth-service/manifest/values.yaml bitnami/postgresql --version 11.9.13
+helm install my-postgresql -f values.yaml bitnami/postgresql --version 11.9.13
 
 **Установка rabbitmq:**
 
@@ -45,11 +45,10 @@ helm install auth-service dev/ --values dev/values.yaml
 Установка сервиса:
 helm install ui-api-service dev/ --values dev/values.yaml
 
-**Order-service**
+Istio:
+kubectl apply -f manifest/istio.yaml
 
-Установка rabbitmq:
-helm repo add bitnami https://charts.bitnami.com/bitnami
-helm install rabbit bitnami/rabbitmq
+**Order-service**
 
 Миграция через job:
 kubectl create configmap order-sql --from-file=order-sql=manifest/schema.sql
